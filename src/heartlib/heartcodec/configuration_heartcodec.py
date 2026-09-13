@@ -1,5 +1,6 @@
 from transformers.configuration_utils import PretrainedConfig
 from typing import List
+from copy import deepcopy
 
 
 class HeartCodecConfig(PretrainedConfig):
@@ -38,6 +39,8 @@ class HeartCodecConfig(PretrainedConfig):
         delay_kernel_size: int = 5,
         init_channel: int = 64,
         res_kernel_size: int = 7,
+        # None keeps the original decoder-only checkpoint architecture.
+        encoder_config: dict = None,
         **kwargs
     ):
         super().__init__(**kwargs)
@@ -71,3 +74,4 @@ class HeartCodecConfig(PretrainedConfig):
         self.delay_kernel_size = delay_kernel_size
         self.init_channel = init_channel
         self.res_kernel_size = res_kernel_size
+        self.encoder_config = deepcopy(encoder_config)

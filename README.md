@@ -59,6 +59,10 @@ Join on Discord! [<img alt="join discord" src="https://img.shields.io/discord/84
   [Model Weights](https://huggingface.co/HeartMuLa/MuLaCover) |
   [Generation Guide](https://github.com/HeartMuLa/MuLaCover/blob/main/examples/cover_song_generation.md).
 
+- 🚀 **13 Sep. 2026**
+
+  We released [HeartCodec-full-oss](https://huggingface.co/HeartMuLa/HeartCodec-full-oss), the complete HeartCodec with encoder and decoder support for audio tokenization and reconstruction. See the [music reconstruction example](./examples/README.md#music-reconstruction).
+
 - 🚀 **10 Apr. 2026**
 
   We launched online demo spaces on [Hugging Face](https://huggingface.co/spaces/HeartMuLa/heartmula) and [ModelScope](https://www.modelscope.cn/studios/HeartMuLa/heartmula/).
@@ -135,6 +139,14 @@ After downloading, the `./ckpt` subfolder should structure like this:
 ├── gen_config.json
 └── tokenizer.json
 ```
+
+For audio reconstruction, download [HeartCodec-full-oss](https://huggingface.co/HeartMuLa/HeartCodec-full-oss), which includes both the encoder and decoder:
+
+```bash
+hf download --local-dir './ckpt/HeartCodec-full' 'HeartMuLa/HeartCodec-full-oss'
+```
+
+See the [music reconstruction example](./examples/README.md#music-reconstruction) for usage.
 
 
 ### ▶️ Example Usage

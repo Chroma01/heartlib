@@ -4,6 +4,7 @@ checkpoint/
 .DS_Store
 **.wav
 **.mp3
+!/assets/reference.mp3
 .vscode/
 **.egg-info/
 build/
