@@ -47,6 +47,18 @@ Our latest internal version of HeartMuLa-7B achieves **comparable performance wi
 ## 📰 News
 Join on Discord! [<img alt="join discord" src="https://img.shields.io/discord/842440537755353128?color=%237289da&logo=discord"/>](https://discord.gg/rkC4VmpH)
 
+- 🚀 **16 Sep. 2026**
+
+  Introducing **MuLaCover**, our controllable cover-song and music-remix model!
+  Start from reference audio or melody/chord MIDI, keep the original lyrics or
+  write new ones, and reshape the genre, instrumentation, and mood through text.
+  MuLaCover uses symbolic melody and harmony to preserve the source's musical
+  identity while allowing flexible reinterpretation. Code, model weights, and
+  generation instructions are now available in the dedicated MuLaCover repository.
+  [Code](https://github.com/HeartMuLa/MuLaCover) |
+  [Model Weights](https://huggingface.co/HeartMuLa/MuLaCover) |
+  [Generation Guide](https://github.com/HeartMuLa/MuLaCover/blob/main/examples/cover_song_generation.md).
+
 - 🚀 **10 Apr. 2026**
 
   We launched online demo spaces on [Hugging Face](https://huggingface.co/spaces/HeartMuLa/heartmula) and [ModelScope](https://www.modelscope.cn/studios/HeartMuLa/heartmula/).
