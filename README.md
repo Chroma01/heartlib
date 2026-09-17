@@ -269,18 +269,12 @@ This repository is licensed under the Apache 2.0 License.
 ```
 
 ## 📬 Contact
-If you are interested in HeartMuLa, feel free to reach us at heartmula.ai@gmail.com
+If you are interested in HeartMuLa, feel free to reach us at [contact@mulalabs.ai](mailto:contact@mulalabs.ai).
 
-Welcome to join us through [discord](https://discord.gg/BKXF5FgH) or Wechat group.
+Welcome to join us through [Discord](https://discord.gg/BKXF5FgH) or our WeChat group.
 
-Scan the QR code on the left to join our Wechat group. If it expires, feel free to raise an issue to remind us of updating. 
-
-If the number of group members exceeds 200, joining the group via directly scanning the QR code is restricted by WeChat. In this case, scan our team member's QR code on the right and send a request writing **HeartMuLa Group Invite**. We will invite you into the group manually.
+Our WeChat group now has more than 200 members. To join, scan our team member's QR code below and include **HeartMuLa Group Invite** in your friend request. We will invite you into the group manually.
 <p align="center">
-    <picture>
-        <source srcset="./assets/group_wx.jpeg" media="(prefers-color-scheme: dark)">
-        <img src="./assets/group_wx.jpeg" width="40%">
-    </picture>
     <picture>
         <source srcset="./assets/lead_wx.jpeg" media="(prefers-color-scheme: dark)">
         <img src="./assets/lead_wx.jpeg" width="40%">
