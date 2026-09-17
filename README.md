@@ -280,3 +280,7 @@ Our WeChat group now has more than 200 members. To join, scan our team member's 
         <img src="./assets/lead_wx.jpeg" width="40%">
     </picture>
 </p>
+
+### Join MuLa Labs, Vera Praxis Lab
+
+We are always excited to meet people with a strong interest in audio and music. MuLa Labs has internship openings for candidates who want to build the next generation of music and audio technology. To apply, email your resume or CV, together with a short introduction, to [contact@mulalabs.ai](mailto:contact@mulalabs.ai).
