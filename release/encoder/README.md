@@ -13,32 +13,31 @@ with [HeartCodec-oss-20260123](https://huggingface.co/HeartMuLa/HeartCodec-oss-2
 which supplies the shared RVQ quantizer and audio decoder. Together they support
 audio → eight token streams at 12.5 Hz → 48 kHz stereo reconstruction.
 
-This repository is a private development preview. The matching code is in
-[HeartMuLa/heartlib-codec-dev](https://github.com/HeartMuLa/heartlib-codec-dev);
-access to both repositories is required. The encoder loading API has not yet
-been merged into the public `HeartMuLa/heartlib` repository.
+The matching code and reconstruction examples are in
+[HeartMuLa/heartlib](https://github.com/HeartMuLa/heartlib).
+
+You can now encode your own audio into tokens for fine-tuning HeartMuLa.
+We hope this contribution will be useful to the music research community.
 
 ## Installation and reconstruction
 
 Use Python 3.10, a CUDA-compatible PyTorch installation, and `ffmpeg` for MP3
-output. Install this development copy of `heartlib` in a separate environment;
-do not install both the public and development copies into one environment.
+output. Install `heartlib` in a separate environment.
 
 ```bash
-git clone https://github.com/HeartMuLa/heartlib-codec-dev.git
-cd heartlib-codec-dev
+git clone https://github.com/HeartMuLa/heartlib.git
+cd heartlib
 pip install -e .
-hf auth login
 hf download HeartMuLa/HeartCodec-oss-encoder --local-dir ./ckpt/HeartCodec-oss-encoder
 hf download HeartMuLa/HeartCodec-oss-20260123 --local-dir ./ckpt/HeartCodec-oss-20260123
 python examples/run_music_reconstruction.py \
   --encoder_path ./ckpt/HeartCodec-oss-encoder \
   --decoder_path ./ckpt/HeartCodec-oss-20260123 \
-  --input_path /path/to/your/audio.mp3 \
+  --input_path ./assets/reference.mp3 \
   --save_path ./reconstructed.mp3
 ```
 
-Use authorized input audio. MP3 is encoded directly from float32 output at
+Replace `--input_path` to use your own authorized audio. MP3 is encoded directly from float32 output at
 320 kbps, without an intermediate PCM WAV. WAV output is available by selecting
 a `.wav` output path. Output is trimmed to the input duration.
 

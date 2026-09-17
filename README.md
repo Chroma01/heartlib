@@ -1,8 +1,3 @@
-> Private HeartCodec development repository. Encoder support has not yet been
-> merged into the public `HeartMuLa/heartlib` repository. Install this repository
-> to use the separate encoder/decoder loading API; do not install both copies of
-> the `heartlib` package into the same environment.
-
 <p align="center">
     <picture>
         <source srcset="./assets/logo.png" media="(prefers-color-scheme: dark)">
@@ -64,11 +59,18 @@ Join on Discord! [<img alt="join discord" src="https://img.shields.io/discord/84
   [Model Weights](https://huggingface.co/HeartMuLa/MuLaCover) |
   [Generation Guide](https://github.com/HeartMuLa/MuLaCover/blob/main/examples/cover_song_generation.md).
 
-- 🛠️ **HeartCodec encoder — private development preview**
+- 🚀 **HeartCodec Encoder Release**
 
-  [HeartCodec-oss-encoder](https://huggingface.co/HeartMuLa/HeartCodec-oss-encoder)
-  adds audio tokenization when paired with the released HeartCodec-oss-20260123
-  decoder and its shared RVQ. See the [reconstruction guide](./examples/README.md#music-reconstruction).
+  We release **HeartCodec-oss-encoder**, adding audio tokenization and reconstruction
+  to HeartCodec. Paired with **HeartCodec-oss-20260123**, it converts mono or stereo
+  audio into discrete tokens and reconstructs 48 kHz stereo audio. Encoder and
+  decoder checkpoints can be downloaded and loaded separately.
+
+  You can now encode your own audio into tokens for fine-tuning HeartMuLa.
+  We hope this contribution will be useful to the music research community.
+
+  [Encoder Weights](https://huggingface.co/HeartMuLa/HeartCodec-oss-encoder) |
+  [Reconstruction Guide](./examples/README.md#music-reconstruction).
 
 - 🚀 **10 Apr. 2026**
 
@@ -117,8 +119,8 @@ We recommend using `python=3.10` for local deployment.
 Clone this repo and install locally.
 
 ```
-git clone https://github.com/HeartMuLa/heartlib-codec-dev.git
-cd heartlib-codec-dev
+git clone https://github.com/HeartMuLa/heartlib.git
+cd heartlib
 pip install -e .
 ```
 
@@ -147,8 +149,7 @@ After downloading, the `./ckpt` subfolder should structure like this:
 └── tokenizer.json
 ```
 
-For audio reconstruction, download the separate encoder and decoder checkpoints
-(the encoder repository currently requires access):
+For audio reconstruction, download the separate encoder and decoder checkpoints:
 
 ```bash
 hf download HeartMuLa/HeartCodec-oss-encoder --local-dir ./ckpt/HeartCodec-oss-encoder

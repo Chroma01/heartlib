@@ -21,22 +21,21 @@ provides the audio encoder. Pair it with
 [HeartCodec-oss-20260123](https://huggingface.co/HeartMuLa/HeartCodec-oss-20260123),
 which provides the decoder and shared RVQ. Together they convert mono or stereo
 audio into eight token streams at 12.5 Hz and reconstruct stereo audio at 48 kHz.
-The encoder and this development repository are private; access is required.
 
 Follow the [environment setup instructions](../README.md), then run these commands from the repository root:
 
 ```bash
-hf auth login
 hf download HeartMuLa/HeartCodec-oss-encoder --local-dir ./ckpt/HeartCodec-oss-encoder
 hf download HeartMuLa/HeartCodec-oss-20260123 --local-dir ./ckpt/HeartCodec-oss-20260123
 python ./examples/run_music_reconstruction.py \
   --decoder_path ./ckpt/HeartCodec-oss-20260123 \
   --encoder_path ./ckpt/HeartCodec-oss-encoder \
-  --input_path /path/to/your/audio.mp3 \
+  --input_path ./assets/reference.mp3 \
   --save_path ./assets/recon.mp3
 ```
 
-Use your own authorized audio with `--input_path`. The example uses CUDA and
+The example uses the bundled reference audio. To use your own authorized audio,
+replace `--input_path`. The example uses CUDA and
 saves a 320 kbps MP3 directly from float32 audio; MP3 output requires `ffmpeg`.
 Use `--save_path ./assets/recon.wav` for 24-bit PCM WAV output, or `--device cpu`
 to run on CPU. Mono input is duplicated to stereo, and output is trimmed to the
