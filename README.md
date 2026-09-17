@@ -1,3 +1,8 @@
+> Private HeartCodec development repository. Encoder support has not yet been
+> merged into the public `HeartMuLa/heartlib` repository. Install this repository
+> to use the separate encoder/decoder loading API; do not install both copies of
+> the `heartlib` package into the same environment.
+
 <p align="center">
     <picture>
         <source srcset="./assets/logo.png" media="(prefers-color-scheme: dark)">
@@ -59,9 +64,11 @@ Join on Discord! [<img alt="join discord" src="https://img.shields.io/discord/84
   [Model Weights](https://huggingface.co/HeartMuLa/MuLaCover) |
   [Generation Guide](https://github.com/HeartMuLa/MuLaCover/blob/main/examples/cover_song_generation.md).
 
-- 🚀 **13 Sep. 2026**
+- 🛠️ **HeartCodec encoder — private development preview**
 
-  We released [HeartCodec-full-oss](https://huggingface.co/HeartMuLa/HeartCodec-full-oss), the complete HeartCodec with encoder and decoder support for audio tokenization and reconstruction. See the [music reconstruction example](./examples/README.md#music-reconstruction).
+  [HeartCodec-oss-encoder](https://huggingface.co/HeartMuLa/HeartCodec-oss-encoder)
+  adds audio tokenization when paired with the released HeartCodec-oss-20260123
+  decoder and its shared RVQ. See the [reconstruction guide](./examples/README.md#music-reconstruction).
 
 - 🚀 **10 Apr. 2026**
 
@@ -110,8 +117,8 @@ We recommend using `python=3.10` for local deployment.
 Clone this repo and install locally.
 
 ```
-git clone https://github.com/HeartMuLa/heartlib.git
-cd heartlib
+git clone https://github.com/HeartMuLa/heartlib-codec-dev.git
+cd heartlib-codec-dev
 pip install -e .
 ```
 
@@ -140,10 +147,12 @@ After downloading, the `./ckpt` subfolder should structure like this:
 └── tokenizer.json
 ```
 
-For audio reconstruction, download [HeartCodec-full-oss](https://huggingface.co/HeartMuLa/HeartCodec-full-oss), which includes both the encoder and decoder:
+For audio reconstruction, download the separate encoder and decoder checkpoints
+(the encoder repository currently requires access):
 
 ```bash
-hf download --local-dir './ckpt/HeartCodec-full' 'HeartMuLa/HeartCodec-full-oss'
+hf download HeartMuLa/HeartCodec-oss-encoder --local-dir ./ckpt/HeartCodec-oss-encoder
+hf download HeartMuLa/HeartCodec-oss-20260123 --local-dir ./ckpt/HeartCodec-oss-20260123
 ```
 
 See the [music reconstruction example](./examples/README.md#music-reconstruction) for usage.

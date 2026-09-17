@@ -16,23 +16,37 @@ Note that our HeartTranscriptor is trained on separated vocal tracks. In this ex
 
 # Music Reconstruction
 
-[HeartCodec-full-oss](https://huggingface.co/HeartMuLa/HeartCodec-full-oss) includes the encoder and decoder. It converts mono or stereo audio into eight token streams at 12.5 Hz and reconstructs stereo audio at 48 kHz.
+[HeartCodec-oss-encoder](https://huggingface.co/HeartMuLa/HeartCodec-oss-encoder)
+provides the audio encoder. Pair it with
+[HeartCodec-oss-20260123](https://huggingface.co/HeartMuLa/HeartCodec-oss-20260123),
+which provides the decoder and shared RVQ. Together they convert mono or stereo
+audio into eight token streams at 12.5 Hz and reconstruct stereo audio at 48 kHz.
+The encoder and this development repository are private; access is required.
 
 Follow the [environment setup instructions](../README.md), then run these commands from the repository root:
 
 ```bash
-hf download --local-dir './ckpt/HeartCodec-full' 'HeartMuLa/HeartCodec-full-oss'
+hf auth login
+hf download HeartMuLa/HeartCodec-oss-encoder --local-dir ./ckpt/HeartCodec-oss-encoder
+hf download HeartMuLa/HeartCodec-oss-20260123 --local-dir ./ckpt/HeartCodec-oss-20260123
 python ./examples/run_music_reconstruction.py \
-  --model_path ./ckpt/HeartCodec-full \
-  --input_path ./assets/reference.mp3 \
+  --decoder_path ./ckpt/HeartCodec-oss-20260123 \
+  --encoder_path ./ckpt/HeartCodec-oss-encoder \
+  --input_path /path/to/your/audio.mp3 \
   --save_path ./assets/recon.mp3
 ```
 
-The example uses the bundled reference audio at `./assets/reference.mp3`. Use `--input_path` to select your own audio file. The example uses CUDA and saves a 320 kbps MP3 by default; MP3 output requires `ffmpeg` on PATH. Use `--save_path ./assets/recon.wav` for 24-bit PCM WAV output, or `--device cpu` to run on CPU. Mono input is duplicated to stereo, and the reconstructed audio is trimmed to the input duration.
+Use your own authorized audio with `--input_path`. The example uses CUDA and
+saves a 320 kbps MP3 directly from float32 audio; MP3 output requires `ffmpeg`.
+Use `--save_path ./assets/recon.wav` for 24-bit PCM WAV output, or `--device cpu`
+to run on CPU. Mono input is duplicated to stereo, and output is trimmed to the
+input duration. Model weights and decoder computation remain FP32.
 
 | Argument | Default | Purpose |
 | --- | --- | --- |
-| `--model_path` | `./ckpt/HeartCodec-full` | Complete model directory. |
+| `--decoder_path` | `./ckpt/HeartCodec-oss-20260123` | Decoder directory or HF model ID. |
+| `--encoder_path` | `./ckpt/HeartCodec-oss-encoder` | Encoder-only directory or HF model ID. |
+| `--model_path` | None | Optional legacy complete checkpoint; mutually exclusive with split paths. |
 | `--input_path` | Required | Input mono or stereo audio file. |
 | `--save_path` | `./assets/recon.mp3` | Output MP3 or WAV file. |
 | `--device` | `cuda` | PyTorch device, such as `cuda:0` or `cpu`. |

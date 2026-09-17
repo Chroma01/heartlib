@@ -14,8 +14,12 @@ from heartlib.heartcodec.modeling_heartcodec import HeartCodec
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--model_path", default="./ckpt/HeartCodec-full",
-                        help="Complete HeartCodec model directory.")
+    parser.add_argument("--decoder_path", default="./ckpt/HeartCodec-oss-20260123",
+                        help="Decoder checkpoint directory or Hugging Face model ID.")
+    parser.add_argument("--encoder_path", default="./ckpt/HeartCodec-oss-encoder",
+                        help="Encoder-only checkpoint directory or Hugging Face model ID.")
+    parser.add_argument("--model_path", default=None,
+                        help="Legacy complete checkpoint; cannot be combined with separate paths.")
     parser.add_argument("--input_path", required=True,
                         help="Input mono or stereo audio file.")
     parser.add_argument("--save_path", default="./assets/recon.mp3",
@@ -53,9 +57,16 @@ def main():
         parser.error("MP3 output requires ffmpeg on PATH")
 
     torch.manual_seed(args.seed)
-    model = HeartCodec.from_pretrained(
-        args.model_path, dtype=torch.float32
-    ).to(device).eval()
+    if args.model_path:
+        import sys
+        if any(arg.split('=')[0] in {'--encoder_path', '--decoder_path'} for arg in sys.argv[1:]):
+            parser.error("--model_path cannot be combined with --encoder_path or --decoder_path")
+        model = HeartCodec.from_pretrained(args.model_path, dtype=torch.float32)
+    else:
+        model = HeartCodec.from_encoder_decoder_pretrained(
+            args.decoder_path, args.encoder_path, dtype=torch.float32
+        )
+    model = model.to(device).eval()
     audio, sample_rate = sf.read(args.input_path, dtype="float32", always_2d=True)
     waveform = torch.from_numpy(audio.T.copy())
 
