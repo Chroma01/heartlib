@@ -16,7 +16,6 @@ audio → eight token streams at 12.5 Hz → 48 kHz stereo reconstruction.
 The matching code and reconstruction examples are in
 [HeartMuLa/heartlib](https://github.com/HeartMuLa/heartlib).
 
-You can now encode your own audio into tokens for fine-tuning HeartMuLa.
 We hope this contribution will be useful to the music research community.
 
 ## Installation and reconstruction

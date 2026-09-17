@@ -66,7 +66,6 @@ Join on Discord! [<img alt="join discord" src="https://img.shields.io/discord/84
   audio into discrete tokens and reconstructs 48 kHz stereo audio. Encoder and
   decoder checkpoints can be downloaded and loaded separately.
 
-  You can now encode your own audio into tokens for fine-tuning HeartMuLa.
   We hope this contribution will be useful to the music research community.
 
   [Encoder Weights](https://huggingface.co/HeartMuLa/HeartCodec-oss-encoder) |
