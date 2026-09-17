@@ -14,8 +14,7 @@
         <img src="./assets/badge.svg" width="20px">
     </picture></a>
     <br>
-    
-    
+    <a href="https://huggingface.co/HeartMuLa/HeartCodec-oss-encoder">HeartCodec-oss-encoder 🤗</a> &nbsp;|&nbsp; <a href="https://github.com/HeartMuLa/MuLaCover">MuLaCover 💻</a> &nbsp;|&nbsp; <a href="https://huggingface.co/HeartMuLa/MuLaCover">MuLaCover 🤗</a>
 </p>
 
 ---
